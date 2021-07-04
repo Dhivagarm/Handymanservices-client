@@ -76,6 +76,7 @@ export default class passchange extends Component {
         axios.post(REACT_APP_URL+'/users/login',data)
         .then(
             resp=>{
+                localStorage.setItem('token', 'Bearer ' + resp.data.token);
                 if(this.state.newp !== this.state.cnewp){
                     alert("New passwords you entered did not match");
                     return;
@@ -103,6 +104,7 @@ export default class passchange extends Component {
                 )
                 .catch(
                     error=>{
+                        alert(error)
                         alert("Check your new password")
                     }
                 )
